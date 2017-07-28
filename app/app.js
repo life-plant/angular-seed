@@ -2,13 +2,13 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
+  'ui.router',//注册ui.router组件
+  'myApp.view1',//这里是ui-router必须的
+  'myApp.view2',//
   'myApp.version'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  	$urlRouterProvider.otherwise('/view1');//不匹配的路径重定向
+}
+]);
